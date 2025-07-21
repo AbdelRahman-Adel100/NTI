@@ -9,20 +9,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = trim($_POST['name'] ?? '');
     $grade = trim($_POST['grade'] ?? '');
 
-    // Validation
     if (empty($name)) {
         $nameError = "Required";
     }
 
     if (!is_numeric($grade) || $grade < 10 || $grade > 100) {
-        $gradeError = "stu‌ent grade min=10 & max =100";
+        $gradeError = "stu‌dent grade min=10 & max =100";
     }
 
     if (empty($nameError) && empty($gradeError)) {
         $success = true;
 
-        // Save to CSV file
-        $file = fopen("students.csv", "a"); // "a" = append
+        $file = fopen("students.csv", "a");
         $date = date("Y-m-d H:i:s");
         fputcsv($file, [$name, $grade, $date]);
         fclose($file);
@@ -73,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <?php endif; ?>
 
                 <?php if ($success): ?>
-                <div class="alert alert-success mt-3">✔ Data saved to students.csv!</div>
+                <div class="alert alert-success mt-3">Data saved to students.csv!</div>
                 <?php endif; ?>
         </form>
     
