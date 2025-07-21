@@ -4,7 +4,7 @@ $students = [];
 if (file_exists("students.csv")) {
     $file = fopen("students.csv", "r");
     while (($data = fgetcsv($file)) !== false) {
-        $students[] = $data; // كل صف عبارة عن [name, grade, date]
+        $students[] = $data; 
     }
     fclose($file);
 }
@@ -15,12 +15,12 @@ if (file_exists("students.csv")) {
 <head>
     <meta charset="UTF-8">
     <title>Student Grades</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">📋 Saved Student Grades</h2>
+    <h2 class="text-center mb-4">Saved Student Grades</h2>
 
     <?php if (count($students) > 0): ?>
         <table class="table table-bordered table-striped table-dark">
