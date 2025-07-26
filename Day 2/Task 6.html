@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 6</title> 
+  
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f5f5f5;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            text-align: left;
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #00ca07;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            background-color: #666;
+        }
+  </style>
+
+</head>
+<body>
+
+    <p>:Name</p>
+  <h1 id="username-title"></h1>
+
+  <form onsubmit="calculateGrade(event)">
+    <label for="username">:your name</label>
+    <input type="text" id="username" required>
+
+    <label for="grade">:Enter your grade (0 - 100)</label>
+    <input type="number" id="grade" min="0" max="100" required>
+
+    <input type="submit" value="التقدير">
+  </form>
+
+  <div class="result" id="result" style="display:none;"></div>
+
+  <script>
+    function calculateGrade(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("username").value;
+      const grade = parseInt(document.getElementById("grade").value);
+      const resultDiv = document.getElementById("result");
+      const title = document.getElementById("username-title");
+
+      let result = "";
+      let bgColor = "#666";
+
+      if (grade >= 90) {
+        result = "ممتاز";
+        bgColor = "#2E8B57";
+      } else if (grade >= 80) {
+        result = "جيد جدًا";
+        bgColor = "#3CB371";
+      } else if (grade >= 65) {
+        result = "جيد";
+        bgColor = "#FFA500";
+      } else {
+        result = "ضعيف";
+        bgColor = "#FF6347";
+      }
+
+      title.textContent = name;
+      resultDiv.textContent = ` ${name}، تقديرك هو: ${result}`;
+      resultDiv.style.backgroundColor = bgColor;
+      resultDiv.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

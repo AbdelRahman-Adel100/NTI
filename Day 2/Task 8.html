@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 8</title>
+  <style>
+    nav { background-color: #ddd; padding: 10px; }
+    table, td, th { border: 1px solid black; width: 30%; border-collapse: collapse; }
+
+    nav {
+    background-color: #aaad17;
+    padding: 15px;
+    border-radius: 8px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 0;
+    padding: 0
+    color white;
+    }
+
+</style>
+</head>
+
+<body>
+
+  <h1>Hello</h1>
+
+  <form onsubmit="return showMessage();">
+    <label>Name:</label>
+    <input type="text" id="username" required>
+    <button type="submit">Send</button>
+  </form>
+
+  <p id="welcome"></p>
+
+  <nav>
+    <a href="#">Main</a> |
+    <a href="#">Settings </a> |
+    <a href="#">about us</a>
+  </nav>
+
+<br><br>
+  <table>
+    <tr>
+        <th>name</th>  
+        <th>grade</th> 
+    </tr>
+    <tr>
+        <td>Sally</td>
+        <td>85</td>
+    </tr>
+  </table>
+
+  <script>
+    function showMessage() {
+      const name = document.getElementById("username").value;
+      document.getElementById("welcome").innerText = `Welcome ${name}`;
+      return false; 
+    }
+  </script>
+</body>
+</html>
