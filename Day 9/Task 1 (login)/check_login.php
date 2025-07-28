@@ -15,10 +15,9 @@
 
         if ($user = $result->fetch_assoc()) {
 
-           //   if (password_verify($password, $user['password'])) {
           
 
-              if ($user['password'] == $password) {
+            if (password_verify($password, $user['password'])) {
                 $_SESSION['user'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role'] = $user['role'];
