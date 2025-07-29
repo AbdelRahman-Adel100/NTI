@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = dbconnect();
 
     $stmt = $conn->prepare("INSERT INTO admin (name, email, password, role) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $hashedPassword ,$role);
+    $stmt->bind_param("ssss", $name, $email, $hashedPassword ,$role);
 
     if ($stmt->execute()) {
         $msg = "Registration successful. You can login now";
