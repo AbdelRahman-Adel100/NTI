@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <input type="text" name="name" id="" placeholder="Name">
+        <input type="email" name="email" id="" placeholder="Email">
+        <input type="text" name="phone" id="" placeholder="Phone">
+        <input type="date" name="name" id="" placeholder="DOB">
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                dob: formData.get('dob')
+            };
+
+            fetch('http://localhost/NTI/Day%2013/get.php', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { "Content-Type": "application/json" }
+            }).then(res => res.json())
+                .then(data => {
+                    console.log("Response from API:", data);
+                });
+        });
+    </script>
+
+</body>
+
+</html>
